@@ -34,7 +34,8 @@ footer code{background:#0f1218;padding:1px 5px;border-radius:4px}
 .wrap{display:grid;grid-template-columns:296px minmax(0,1fr);gap:0;min-height:100vh}
 .side{position:sticky;top:0;align-self:start;max-height:100vh;overflow:auto;padding:16px 12px 12px;
   background:#151821;border-right:1px solid var(--line);overscroll-behavior:contain}
-.brand{font-size:17px;font-weight:700;color:#fff;line-height:1.35;margin:0 0 12px;padding:0 4px}
+.logo{width:132px;height:auto;flex:0 0 auto;background:none}
+.brand{display:flex;align-items:center;justify-content:space-between;gap:10px;font-size:17px;font-weight:700;color:#fff;line-height:1.35;margin:0 0 12px;padding:0 4px}
 .brand span{font-size:12px;font-weight:400;color:#8b93a5}
 .q{width:100%;background:#0f1218;border:1px solid var(--line);color:var(--fg);
   padding:8px 11px;border-radius:8px;font-size:13.5px;margin:0 0 10px}
@@ -85,7 +86,6 @@ details:not([open])>summary .car{transform:rotate(-90deg)}
 .item .avatar{width:30px;height:30px;flex:0 0 30px;object-fit:cover;border-radius:6px;background:#0d1016}
 .item .meta{min-width:0}
 .item .nm{font-size:13.5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.item .pid{font-style:normal;color:#6b7488;font-size:11.5px;margin-right:6px;font-variant-numeric:tabular-nums}
 .item .sub{font-size:11.5px;color:#666f82}
 /* 顶上的「主页」：不分组，单独一条，与分组列表用底边分隔 */
 .item.top{margin:0 0 10px;padding:9px 10px;background:#12151d;border:1px solid var(--line);border-radius:9px}

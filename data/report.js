@@ -1,20 +1,14 @@
+/* data_pretty · data/report.js —— 工具生成的数据文件，请勿手改。
+ * 抽取体检报告：解析成功/失败的表数、异常清单等。
+ * 生成者：tools/web_extract.py
+ * 版式由 tools/data_pretty.js 维护（只动空白不动值，可用 --check 复验）。 */
 window.DB_REPORT={
  "generated": "2026-10-09 02:08:04",
  "seconds": 8.7,
  "tables": 270,
  "tableRows": 53898,
- "tablesFailed": [
-  {
-   "table": "config",
-   "issue": "parse-failed: no _configs"
-  }
- ],
- "notes": [
-  {
-   "table": "config",
-   "issue": "parse-failed: no _configs"
-  }
- ],
+ "tablesFailed": [{"table":"config","issue":"parse-failed: no _configs"}],
+ "notes": [{"table":"config","issue":"parse-failed: no _configs"}],
  "notesCount": 1,
  "identKeys": [
   "mail_def_text1",
@@ -47,22 +41,8 @@ window.DB_REPORT={
   "mail_text8",
   "mail_text9"
  ],
- "i18nEntries": {
-  "chs": 25023,
-  "cht": 25023,
-  "en": 25023,
-  "jp": 17867
- },
- "assetRefs": {
-  "icon": 726,
-  "avatar": 405,
-  "hit": 885,
-  "miss": 246
- },
- "events": {
-  "total": 3013,
-  "hit": 2282,
-  "miss": 731
- },
+ "i18nEntries": {"chs":25023,"cht":25023,"en":25023,"jp":17867},
+ "assetRefs": {"icon":726,"avatar":405,"hit":885,"miss":246},
+ "events": {"total":3013,"hit":2282,"miss":731},
  "banks": 4171
 };

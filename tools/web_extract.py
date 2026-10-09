@@ -247,6 +247,9 @@ def extract_tables():
         payload = {"name": name, "accessor": jsname, "fields": fields,
                    "keyIndex": (nfix if nfix and len(nfix) == len(fields) else list(range(1, len(fields) + 1))),
                    "ids": ids, "rows": rows}
+        # 版式说明：这里故意写紧凑单行（抽取阶段体积最小）；跑完抽取后执行
+        # `node tools/data_pretty.js` 即可恢复「一条一行 + 文件头注释」的可读版式。
+        # 那个工具只改空白不改值，写前逐 token 比对，可用 --check 复验。
         with open(os.path.join(OUT_T, "%s.js" % re.sub(r"[^\w.-]", "_", jsname)), "w", encoding="utf-8") as f:
             f.write("window.DB_TABLES=window.DB_TABLES||{};window.DB_TABLES[%s]=%s;" %
                     (json.dumps(jsname), json.dumps(payload, ensure_ascii=False, separators=(",", ":"))))

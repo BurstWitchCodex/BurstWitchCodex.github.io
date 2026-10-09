@@ -36,7 +36,9 @@ const takeFromHtml = (html) => {
     m[1].split(/\s+/).filter(Boolean).forEach(c => bump(c));
 };
 let files = 0;
-const P = JSON.parse(fs.readFileSync(path.join(WEB, "data/pagelist.js"), "utf8").replace(/^window\.DB_PAGES=/, "").replace(/;\s*$/, ""));
+/* pagelist.js 现在带文件头注释且一条一行，所以取第一个 [ 到最后一个 ] 的区间，不再靠 ^window.DB_PAGES= 前缀 */
+const PL_TEXT = fs.readFileSync(path.join(WEB, "data/pagelist.js"), "utf8");
+const P = JSON.parse(PL_TEXT.slice(PL_TEXT.indexOf("["), PL_TEXT.lastIndexOf("]") + 1));
 P.forEach(p => {
   const body = fs.readFileSync(path.join(WEB, p.file), "utf8");
   takeFromHtml(md2html(body).html);

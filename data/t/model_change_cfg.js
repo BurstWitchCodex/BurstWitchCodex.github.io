@@ -1,1 +1,25 @@
-window.DB_TABLES=window.DB_TABLES||{};window.DB_TABLES["model_change_cfg"]={"name":"model_change_cfg","accessor":"model_change_cfg","fields":["id","model","bpModel","model1","bpModel1","model2","bpModel2","model3","bpModel3"],"keyIndex":[1,2,3,4,5,6,7,8,9],"ids":["1","2","3","4","5","6","7","8","9","10","11"],"rows":[[1,"prefab_enemeyModel/M2_luodelige",null,"prefab_enemeyModel/M2_luodelige2",null,"-1",null,"-1",null],[2,"prefab_enemeyModel/M2_Kalinna",null,"prefab_enemeyModel/M2_Kalinna2",null,"-1",null,"-1",null],[3,"prefab_enemeyModel/M2_Haiyinlixi",null,"prefab_enemeyModel/M2_Haiyinlixi2",null,"-1",null,"-1",null],[4,"prefab_enemeyModel/M2_Duerlahan",null,"prefab_enemeyModel/M2_Duerlahan2",null,"-1",null,"-1",null],[5,"prefab_enemeyModel/M2_Yanmo",null,"prefab_enemeyModel/M2_Yanmo2",null,"-1",null,"-1",null],[6,"prefab_enemeyModel/M2_Haiyinzi",null,"prefab_enemeyModel/M2_Haiyinzi2",null,"prefab_enemeyModel/M2_Haiyinzi3",null,"-1",null],[7,"prefab_enemeyModel/M2_Wangshengzhiyuan",null,"prefab_enemeyModel/M2_Wangshengzhiyuan2",null,"-1",null,"-1",null],[8,"prefab_enemeyModel/M2_asimode",null,"prefab_enemeyModel/M2_asimode2",null,"-1",null,"-1",null],[9,"prefab_enemeyModel/M2_Xi",null,"prefab_enemeyModel/M2_Xi2",null,"-1",null,"-1",null],[10,"prefab_enemeyModel/M2_Boss_Biexibu",null,"prefab_enemeyModel/M2_Boss_Biexibu2",null,"-1",null,"-1",null],[11,"prefab_enemeyModel/M2_boss_yaerweisi",null,"prefab_enemeyModel/M2_boss_yaerweisi3",null,"-1",null,"-1",null]]};
+/* data_pretty · data/t/model_change_cfg.js —— 工具生成的数据文件，请勿手改。
+ * Lua 配置表 model_change_cfg 的抽取结果：name/accessor/file 是表身份；fields 是字段名顺序；rows 是数据行，每行是按 fields 顺序排列的数组。
+ * 读取方：tools/pages_archive_audio.js、tools/pages_archive_media.js（eval 载入 window.DB_TABLES）。
+ * 生成者：tools/web_extract.py（跑完执行 node tools/data_pretty.js 恢复排版）
+ * 版式由 tools/data_pretty.js 维护（只动空白不动值，可用 --check 复验）。 */
+window.DB_TABLES=window.DB_TABLES||{};window.DB_TABLES["model_change_cfg"]={
+ "name": "model_change_cfg",
+ "accessor": "model_change_cfg",
+ "fields": ["id","model","bpModel","model1","bpModel1","model2","bpModel2","model3","bpModel3"],
+ "keyIndex": [1,2,3,4,5,6,7,8,9],
+ "ids": ["1","2","3","4","5","6","7","8","9","10","11"],
+ "rows": [
+  [1,"prefab_enemeyModel/M2_luodelige",null,"prefab_enemeyModel/M2_luodelige2",null,"-1",null,"-1",null],
+  [2,"prefab_enemeyModel/M2_Kalinna",null,"prefab_enemeyModel/M2_Kalinna2",null,"-1",null,"-1",null],
+  [3,"prefab_enemeyModel/M2_Haiyinlixi",null,"prefab_enemeyModel/M2_Haiyinlixi2",null,"-1",null,"-1",null],
+  [4,"prefab_enemeyModel/M2_Duerlahan",null,"prefab_enemeyModel/M2_Duerlahan2",null,"-1",null,"-1",null],
+  [5,"prefab_enemeyModel/M2_Yanmo",null,"prefab_enemeyModel/M2_Yanmo2",null,"-1",null,"-1",null],
+  [6,"prefab_enemeyModel/M2_Haiyinzi",null,"prefab_enemeyModel/M2_Haiyinzi2",null,"prefab_enemeyModel/M2_Haiyinzi3",null,"-1",null],
+  [7,"prefab_enemeyModel/M2_Wangshengzhiyuan",null,"prefab_enemeyModel/M2_Wangshengzhiyuan2",null,"-1",null,"-1",null],
+  [8,"prefab_enemeyModel/M2_asimode",null,"prefab_enemeyModel/M2_asimode2",null,"-1",null,"-1",null],
+  [9,"prefab_enemeyModel/M2_Xi",null,"prefab_enemeyModel/M2_Xi2",null,"-1",null,"-1",null],
+  [10,"prefab_enemeyModel/M2_Boss_Biexibu",null,"prefab_enemeyModel/M2_Boss_Biexibu2",null,"-1",null,"-1",null],
+  [11,"prefab_enemeyModel/M2_boss_yaerweisi",null,"prefab_enemeyModel/M2_boss_yaerweisi3",null,"-1",null,"-1",null]
+ ]
+};

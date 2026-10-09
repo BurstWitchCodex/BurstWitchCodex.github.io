@@ -42,10 +42,10 @@ function walkMd(dir, out) {
 }
 const titleOf = f => path.basename(f).replace(/\.md$/, "").replace(/^\d\d-/, "").replace(/^(\d{4})_/, "$1");
 function bandOf(id, title) {
-  if (id === "1043") return "未实装（1043）";              // CardCharacter 无此行，不归入「后续追加」
+  if (id === "1043") return "未实装";                      // CardCharacter 无此行，不归入「后续追加」
   if (/^夏日/.test(title)) return "夏日系列";
   if (/^(梦魇|圣羽|净界)/.test(title) || title.includes("·")) return "特殊形态";
-  return +id <= 1042 ? "初版角色（1001–1042）" : "后续追加（1044–1099）";
+  return +id <= 1042 ? "初版角色" : "后续追加";
 }
 /* 头像按约定路径找，找不到再试好感立绘位（包内只有 body 或 haogan 之一很常见），两边都没就 null */
 function heroThumb(id) {
@@ -97,7 +97,14 @@ const keep = new Set(entries.map(e => e.doc));
 const orphans = fs.existsSync(path.join(WEB, "docs"))
   ? fs.readdirSync(path.join(WEB, "docs")).filter(f => f.endsWith(".md.js") && !keep.has("docs/" + f)) : [];
 if (!CHECK) orphans.forEach(f => fs.unlinkSync(path.join(WEB, "docs", f)));
-if (!CHECK) fs.writeFileSync(path.join(WEB, "data/pagelist.js"), "window.DB_PAGES=" + JSON.stringify(entries) + ";");
+if (!CHECK) {
+  /* 清单用 tools/data_pretty.js 的同一套排版产出（一条一行 + 文件头注释），
+   * 否则下次构建又会把 data/pagelist.js 压回一整行。 */
+  const pretty = require("./data_pretty.js");
+  const raw = "window.DB_PAGES=" + JSON.stringify(entries) + ";";
+  fs.writeFileSync(path.join(WEB, "data/pagelist.js"),
+    pretty.headerFor("data/pagelist.js") + pretty.reformat(raw).replace(/\s+$/, "") + String.fromCharCode(10));
+}
 
 /* ---------- 3) 自检 ----------
  * 路径一律按【站点根】解析：正文被注入 网页版/index.html，浏览器解析相对路径的基准是 index.html 所在目录，

@@ -19,8 +19,9 @@ const OUT = "_未引用资源";
 const norm = p => p.split(path.sep).join("/");
 const A_IMG = "media/img", A_TH = "media/thumb", A_SD = "media/sound", A_AR = "pages/归档";
 
-const P = JSON.parse(fs.readFileSync(path.join(WEB, "data/pagelist.js"), "utf8")
-  .replace(/^window\.DB_PAGES=/, "").replace(/;\s*$/, ""));
+/* pagelist.js 带文件头注释且一条一行：取第一个 [ 到最后一个 ] 的区间，不依赖行首前缀 */
+const PL_TEXT = fs.readFileSync(path.join(WEB, "data/pagelist.js"), "utf8");
+const P = JSON.parse(PL_TEXT.slice(PL_TEXT.indexOf("["), PL_TEXT.lastIndexOf("]") + 1));
 
 const refs = new Set();
 P.forEach(p => {

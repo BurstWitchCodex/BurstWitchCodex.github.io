@@ -1,1 +1,43 @@
-window.DB_TABLES=window.DB_TABLES||{};window.DB_TABLES["Active_sixthmaintype"]={"name":"active_sixthmaintype","accessor":"Active_sixthmaintype","fields":["id","activeid","activeUid","ActivechargeUid","Quest_child_class_1","Quest_child_class_2","GashaponListId","Story_Level_type","Nightmare_Level_type","showShopBtn"],"keyIndex":[1,2,3,4,5,6,7,8,9,10],"ids":["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18"],"rows":[[1,2002,50002,60001,[2001,"source_common/ActivityLevel/icon_diliufengyin_jifen"],[2002,"source_common/ActivityLevel/icon_diliufengyin_jifentub"],-1,[[819,"Img_GuanQia_XuanQuDi"],[820,"Img_GuanQia_XuanQuDi"]],803,1],[2,2004,50004,161002,null,null,-1,[[821,"Img_GuanQia_XuanQuDi"],[822,"Img_GuanQia_XuanQuDi"]],0,1],[3,2021,50021,161003,null,null,-1,[[823,"Img_GuanQia_XuanQuDi"],[824,"Img_GuanQia_XuanQuDi"]],808,1],[4,2008,50008,60004,[2005,"source_common/ActivityLevel/icon_diliufengyin_jifen"],[2006,"source_common/ActivityLevel/icon_diliufengyin_jifentub"],1003,[[809,"Img_GuanQia_XuanQuDi"],[810,"Img_GuanQia_XuanQuDi"]],811,1],[5,2010,50010,300004,[2007,"source_common/ActivityLevel/icon_xiniannaochun_jifen"],[2008,"source_common/ActivityLevel/icon_xiniannaochun_jifentub"],1005,[[812,"Img_GuanQia_XuanQuDi"],[813,"Img_GuanQia_XuanQuDi"]],814,1],[6,2012,50012,300010,null,null,2002,[[815,"Img_GuanQia_XuanQuDi"]],0,1],[7,2014,50014,300012,null,null,3001,[[812,"Img_GuanQia_XuanQuDi"],[813,"Img_GuanQia_XuanQuDi"]],0,1],[8,2015,50015,300019,[2009,"source_common/ActivityLevel/icon_diliufengyin_jifen"],[2010,"source_common/ActivityLevel/icon_diliufengyin_jifentub"],1006,[[816,"Img_GuanQia_XuanQuDi"],[817,"Img_GuanQia_XuanQuDi"]],818,1],[9,2016,50016,300032,null,null,1007,[[812,"Img_GuanQia_XuanQuDi"],[813,"Img_GuanQia_XuanQuDi"]],0,1],[10,2017,50017,300031,null,null,3003,[[812,"Img_GuanQia_XuanQuDi"],[813,"Img_GuanQia_XuanQuDi"]],0,-1],[11,2018,50018,300033,null,null,3004,[[812,"Img_GuanQia_XuanQuDi"],[813,"Img_GuanQia_XuanQuDi"]],0,1],[12,2019,50019,300041,null,null,1010,[[812,"Img_GuanQia_XuanQuDi"],[813,"Img_GuanQia_XuanQuDi"]],0,1],[13,2020,50020,300047,null,null,1011,[[812,"Img_GuanQia_XuanQuDi"],[813,"Img_GuanQia_XuanQuDi"]],0,1],[14,2006,50006,161003,null,null,-1,[[823,"Img_GuanQia_XuanQuDi"],[824,"Img_GuanQia_XuanQuDi"]],808,1],[15,102022,50022,161004,null,null,1013,[[913,"Img_GuanQia_XuanQuDi"],[914,"Img_GuanQia_XuanQuDi"]],0,-1],[16,102023,50023,300051,null,null,1015,[[913,"Img_GuanQia_XuanQuDi"],[914,"Img_GuanQia_XuanQuDi"]],0,-1],[17,2022,50024,300053,null,null,-1,[[825,"Img_GuanQia_XuanQuDi"],[826,"Img_GuanQia_XuanQuDi"]],811,-1],[18,2023,50025,300054,null,null,-1,[[917,"Img_GuanQia_XuanQuDi"],[918,"Img_GuanQia_XuanQuDi"]],0,-1]]};
+/* data_pretty · data/t/Active_sixthmaintype.js —— 工具生成的数据文件，请勿手改。
+ * Lua 配置表 Active_sixthmaintype 的抽取结果：name/accessor/file 是表身份；fields 是字段名顺序；rows 是数据行，每行是按 fields 顺序排列的数组。
+ * 读取方：tools/pages_archive_audio.js、tools/pages_archive_media.js（eval 载入 window.DB_TABLES）。
+ * 生成者：tools/web_extract.py（跑完执行 node tools/data_pretty.js 恢复排版）
+ * 版式由 tools/data_pretty.js 维护（只动空白不动值，可用 --check 复验）。 */
+window.DB_TABLES=window.DB_TABLES||{};window.DB_TABLES["Active_sixthmaintype"]={
+ "name": "active_sixthmaintype",
+ "accessor": "Active_sixthmaintype",
+ "fields": [
+  "id",
+  "activeid",
+  "activeUid",
+  "ActivechargeUid",
+  "Quest_child_class_1",
+  "Quest_child_class_2",
+  "GashaponListId",
+  "Story_Level_type",
+  "Nightmare_Level_type",
+  "showShopBtn"
+ ],
+ "keyIndex": [1,2,3,4,5,6,7,8,9,10],
+ "ids": ["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18"],
+ "rows": [
+  [1,2002,50002,60001,[2001,"source_common/ActivityLevel/icon_diliufengyin_jifen"],[2002,"source_common/ActivityLevel/icon_diliufengyin_jifentub"],-1,[[819,"Img_GuanQia_XuanQuDi"],[820,"Img_GuanQia_XuanQuDi"]],803,1],
+  [2,2004,50004,161002,null,null,-1,[[821,"Img_GuanQia_XuanQuDi"],[822,"Img_GuanQia_XuanQuDi"]],0,1],
+  [3,2021,50021,161003,null,null,-1,[[823,"Img_GuanQia_XuanQuDi"],[824,"Img_GuanQia_XuanQuDi"]],808,1],
+  [4,2008,50008,60004,[2005,"source_common/ActivityLevel/icon_diliufengyin_jifen"],[2006,"source_common/ActivityLevel/icon_diliufengyin_jifentub"],1003,[[809,"Img_GuanQia_XuanQuDi"],[810,"Img_GuanQia_XuanQuDi"]],811,1],
+  [5,2010,50010,300004,[2007,"source_common/ActivityLevel/icon_xiniannaochun_jifen"],[2008,"source_common/ActivityLevel/icon_xiniannaochun_jifentub"],1005,[[812,"Img_GuanQia_XuanQuDi"],[813,"Img_GuanQia_XuanQuDi"]],814,1],
+  [6,2012,50012,300010,null,null,2002,[[815,"Img_GuanQia_XuanQuDi"]],0,1],
+  [7,2014,50014,300012,null,null,3001,[[812,"Img_GuanQia_XuanQuDi"],[813,"Img_GuanQia_XuanQuDi"]],0,1],
+  [8,2015,50015,300019,[2009,"source_common/ActivityLevel/icon_diliufengyin_jifen"],[2010,"source_common/ActivityLevel/icon_diliufengyin_jifentub"],1006,[[816,"Img_GuanQia_XuanQuDi"],[817,"Img_GuanQia_XuanQuDi"]],818,1],
+  [9,2016,50016,300032,null,null,1007,[[812,"Img_GuanQia_XuanQuDi"],[813,"Img_GuanQia_XuanQuDi"]],0,1],
+  [10,2017,50017,300031,null,null,3003,[[812,"Img_GuanQia_XuanQuDi"],[813,"Img_GuanQia_XuanQuDi"]],0,-1],
+  [11,2018,50018,300033,null,null,3004,[[812,"Img_GuanQia_XuanQuDi"],[813,"Img_GuanQia_XuanQuDi"]],0,1],
+  [12,2019,50019,300041,null,null,1010,[[812,"Img_GuanQia_XuanQuDi"],[813,"Img_GuanQia_XuanQuDi"]],0,1],
+  [13,2020,50020,300047,null,null,1011,[[812,"Img_GuanQia_XuanQuDi"],[813,"Img_GuanQia_XuanQuDi"]],0,1],
+  [14,2006,50006,161003,null,null,-1,[[823,"Img_GuanQia_XuanQuDi"],[824,"Img_GuanQia_XuanQuDi"]],808,1],
+  [15,102022,50022,161004,null,null,1013,[[913,"Img_GuanQia_XuanQuDi"],[914,"Img_GuanQia_XuanQuDi"]],0,-1],
+  [16,102023,50023,300051,null,null,1015,[[913,"Img_GuanQia_XuanQuDi"],[914,"Img_GuanQia_XuanQuDi"]],0,-1],
+  [17,2022,50024,300053,null,null,-1,[[825,"Img_GuanQia_XuanQuDi"],[826,"Img_GuanQia_XuanQuDi"]],811,-1],
+  [18,2023,50025,300054,null,null,-1,[[917,"Img_GuanQia_XuanQuDi"],[918,"Img_GuanQia_XuanQuDi"]],0,-1]
+ ]
+};

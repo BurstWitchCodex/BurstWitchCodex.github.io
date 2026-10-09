@@ -1,1 +1,28 @@
-window.DB_TABLES=window.DB_TABLES||{};window.DB_TABLES["Activepiece_QuanShuShow"]={"name":"activepiece_quanshushow","accessor":"Activepiece_QuanShuShow","fields":["id","Turns","IconShow","ItemShow","Activeid"],"keyIndex":[1,2,3,4,5],"ids":["1","2","3","4","5","6","7","8","9","10","11","12","13","14"],"rows":[[1,50,[4,3000024],[10,20,30,40,50],1005],[2,80,[4,10240002],null,1005],[3,40,[4,10100003],null,1015],[4,80,[4,3000000],null,1015],[5,40,[4,10140002],null,1018],[6,80,[4,3000000],null,1018],[7,40,[4,10320002],null,1020],[8,80,[4,3000000],null,1020],[9,40,[4,10100003],null,1036],[10,80,[4,3000000],null,1036],[11,40,[4,10100003],null,1044],[12,80,[4,3000000],null,1044],[13,40,[4,10140002],null,1045],[14,80,[4,3000000],null,1045]]};
+/* data_pretty · data/t/Activepiece_QuanShuShow.js —— 工具生成的数据文件，请勿手改。
+ * Lua 配置表 Activepiece_QuanShuShow 的抽取结果：name/accessor/file 是表身份；fields 是字段名顺序；rows 是数据行，每行是按 fields 顺序排列的数组。
+ * 读取方：tools/pages_archive_audio.js、tools/pages_archive_media.js（eval 载入 window.DB_TABLES）。
+ * 生成者：tools/web_extract.py（跑完执行 node tools/data_pretty.js 恢复排版）
+ * 版式由 tools/data_pretty.js 维护（只动空白不动值，可用 --check 复验）。 */
+window.DB_TABLES=window.DB_TABLES||{};window.DB_TABLES["Activepiece_QuanShuShow"]={
+ "name": "activepiece_quanshushow",
+ "accessor": "Activepiece_QuanShuShow",
+ "fields": ["id","Turns","IconShow","ItemShow","Activeid"],
+ "keyIndex": [1,2,3,4,5],
+ "ids": ["1","2","3","4","5","6","7","8","9","10","11","12","13","14"],
+ "rows": [
+  [1,50,[4,3000024],[10,20,30,40,50],1005],
+  [2,80,[4,10240002],null,1005],
+  [3,40,[4,10100003],null,1015],
+  [4,80,[4,3000000],null,1015],
+  [5,40,[4,10140002],null,1018],
+  [6,80,[4,3000000],null,1018],
+  [7,40,[4,10320002],null,1020],
+  [8,80,[4,3000000],null,1020],
+  [9,40,[4,10100003],null,1036],
+  [10,80,[4,3000000],null,1036],
+  [11,40,[4,10100003],null,1044],
+  [12,80,[4,3000000],null,1044],
+  [13,40,[4,10140002],null,1045],
+  [14,80,[4,3000000],null,1045]
+ ]
+};

@@ -302,7 +302,7 @@
       a.appendChild(av);
     }
     var box = el("div", "meta");
-    box.appendChild(el("div", "nm", (p.id ? '<i class="pid">' + p.id + "</i>" : "") + escapeText(p.title)));
+    box.appendChild(el("div", "nm", escapeText(p.title)));   // 侧栏只显名字；编号仍参与上方 hay 的筛选
     box.appendChild(el("div", "sub", (p.words ? p.words.toLocaleString() + " 字" : "")));
     a.appendChild(box);
     return a;
