@@ -26,12 +26,12 @@
 网页版/
 ├── index.html          入口：侧栏 + 正文容器 + favicon，只加载 pagelist.js 与 viewer.js
 ├── favicon.png         站点图标（181×184 PNG）
-├── update.bat          两步：pages_build.js 构建 → 打开页面
 ├── css/app.css         全部样式（88 条规则，全部经 css_census.js 实渲染证明在用）
 ├── js/viewer.js        清单渲染（三级折叠）、hash 路由、Markdown 渲染、页内查找
 ├── pages/              ★ 文案唯一来源
 │   ├── 主页.md            进站默认页（站点介绍与已知缺口）  → 一级「主页」（侧栏第一条）
 │   ├── 羁绊.md            羁绊全量                        → 一级「汇总」
+│   ├── 法典系统.md        法典系统的构筑点说明、六系 × 17 档成长目标等 112 条 → 一级「汇总」
 │   ├── 角色/<id>_<名>.md  65 篇                          → 一级「角色」+ 二级编号段/形态（含未实装 1043）
 │   └── 归档/<分类>/<大文章>/<篇>.md  81 篇               → 一级「归档」+ 二级分类
 ├── docs/               每篇 md 的原样包装 148 份 <名>.md.js（勿手改，pages_build.js 重生成）
@@ -45,19 +45,16 @@
 └── tools/              见「脚本清单」
 ```
 
-侧栏已经**没有「资料目录」这层包裹**，从上到下是：先一条「主页」（不分组，进站默认页），再三层结构 **一级分组（sub）→ 二级分组（cat）→ 文章条目**：
+侧栏从上到下是：先一条「主页」（不分组，进站默认页），再三层结构 **一级分组（sub）→ 二级分组（cat）→ 文章条目**：
 
 | 一级 | 二级 | 条目 |
 |---|---|---:|
 | 主页 | —（单独一条） | 1 篇 |
-| 汇总 | —（cat 为空，条目直挂一级） | 羁绊 1 篇 |
-| 角色 | 初版角色（1001–1042）／后续追加（1044–1099）／特殊形态／未实装（1043）／夏日系列 | 65 篇 |
+| 汇总 | —（cat 为空，条目直挂一级） | 羁绊、法典系统 共 2 篇 |
+| 角色 | 初版角色／后续追加／特殊形态／未实装／夏日系列 | 65 篇 |
 | 归档 | 10 个分类（01_主线剧情与外传 … 10_战斗对白） | 81 篇 |
 
-角色二级分组从文件名即可判定（`1043` = 未实装；`12xx` 或名字以「夏日」开头 = 夏日系列；「梦魇／圣羽／净界／含间隔号」= 特殊形态；其余按编号段），不查任何表。
-头像回退：先找 `media/thumb/source_avatar/hero/body_<id>_body_<id>.png`，没有再试好感立绘位 `media/thumb/source_avatar/haogan/haogan_<id>_….png`，两边都没就 `thumb: null`（不编造）——1043 就是靠这个回退拿到头像的（她只有 haogan 图，包内没有 body 主立绘）。
-
-## 归档的拆分口径（`tools/_retired/pages_split_archive.js`）
+## 归档的拆分口径
 
 - 一个 `## 大标题` = 一篇小文章；**不跨大标题合并**（要压缩零碎小节用 `--min-chars`）。
 - 小文章放进**大文章同名文件夹**：`pages/归档/04_道具与装备/04_道具与装备文案/04-01_一、道具与素材.md`；
@@ -145,33 +142,6 @@ APK → Lua 明文（标准 XXTEA，8 字节运行时密钥，1132 份，已逐�
 - `_未引用资源/` 1.43 GB / 3201 个：约 820 MB 从未显示过（运营图集、通用音效等）、565 MB 是废弃的「语音样本」块遗留、
   923 个是图集分块页（其中真正带母图的 340 个 / 121 MB）。等你手动删。
 - `docs/` 是扁平目录 ⇒ md 文件名必须全站唯一，`pages_build.js` 会拒绝重名并退出非 0。
-
-## 部署到 GitHub Pages
-
-仓库根就是站点根（`index.html` 在顶层），已备好三样东西：
-
-| 文件 | 作用 |
-| --- | --- |
-| `.nojekyll` | 关掉 Jekyll 处理，文件原样发布（含 `_` 开头目录与 `.md`） |
-| `.gitignore` | 排除临时产物与**本机专用脚本**：`node_modules/`、`_site/`、`_未引用资源/`、`*.tsv`、`*.log`、缩略图缓存，以及 `update.bat`、`tools/_retired/`、`tools/一键更新文章.bat`（这三项不入库，只在本地用） |
-| `.github/workflows/deploy.yml` | push 到 `main` 时把 `index.html favicon.png README.md css js data docs pages media` 拷进 `_site` 再发布；**`tools/` 与 `update.bat` 不进产物** |
-
-> 注：`tools/_retired/` 与 `update.bat` 已列入 `.gitignore`，属于“只在本机跑的一次性工具与本地启动器”，仓库与站点都不依赖它们；需要重用时回到本地目录执行即可。
-
-开启方式：GitHub 仓库 → Settings → Pages → Build and deployment → **Source: GitHub Actions**，然后 `git push`，Actions 会跑 “Deploy Pages”。
-
-仓库地址：`https://github.com/BurstWitch-Codex/BurstWitchCodex.github.io.git`（已验证可连、当前是空仓库）。
-**注意命名坑**：GitHub 只有在**仓库名 = `<账号名>.github.io`**（大小写不敏感，但连字符必须一致）时才把它当“用户站”发布到根路径。
-现在账号是 `BurstWitch-Codex`、仓库是 `BurstWitchCodex.github.io`，差一个连字符 → 会按**项目站**发布，地址是
-`https://burstwitch-codex.github.io/BurstWitchCodex.github.io/`。
-两种选择：① 不改名字，直接用上面的子路径（本站引用全是站点根相对路径，实测 5568 条资源引用里 `../` 与 `/` 开头 0 条，**子路径下照常工作**）；
-② 想要根路径 `https://burstwitch-codex.github.io/`，就在 GitHub 上把仓库改名为 `BurstWitch-Codex.github.io`，然后本地同步：`git remote set-url origin https://github.com/BurstWitch-Codex/BurstWitch-Codex.github.io.git`。
-
-**体积与带宽（照实说）**：站点内容 **765 MB**（转码音频前是 1.9 GB），在 Pages 的 1 GB 软限内；带宽软限 100 GB/月 —— 音频是 `<audio preload="none">`、图片是 `loading="lazy"`，只有真正点开的内容才下载，但一个人把全站图和音全点一遍约 700 MB，量级上约 140 次“全量访问”就会顶到软限。
-
-**文件名已无空格**：`pages/` 下 32 个带空格的 md 已去空格改名（`tools/_retired/pages_rename_nospace.js`，带撞名检查），`docs/` 与清单随后重生成；现在全站 4535 个文件里 basename 含空格的是 **0** 个，URL 里不会再出现 `%20`。
-
-**首次推送**（`user.name` / `user.email` 已配好）：
 
 ```
 git add -A
