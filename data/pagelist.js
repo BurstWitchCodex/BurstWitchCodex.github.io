@@ -82,7 +82,7 @@ window.DB_PAGES=[
  {"file":"pages/归档/03_关卡与任务/03_关卡与任务文本/01_一、关卡描述.md","words":24962,"doc":"docs/01_一、关卡描述.md.js","id":"","title":"01_一、关卡描述","sub":"归档","cat":"03_关卡与任务","thumb":null},
  {"file":"pages/归档/03_关卡与任务/03_关卡与任务文本/02_二、任务描述.md","words":2105,"doc":"docs/02_二、任务描述.md.js","id":"","title":"02_二、任务描述","sub":"归档","cat":"03_关卡与任务","thumb":null},
  {"file":"pages/归档/03_关卡与任务/03_关卡与任务文本/03_配图.md","words":2546,"doc":"docs/03_配图.md.js","id":"","title":"03_配图","sub":"归档","cat":"03_关卡与任务","thumb":null},
- {"file":"pages/归档/03_关卡与任务/03_关卡与任务文本/04_关卡BGM.md","words":929,"doc":"docs/04_关卡BGM.md.js","id":"","title":"04_关卡BGM","sub":"归档","cat":"03_关卡与任务","thumb":null},
+ {"file":"pages/归档/03_关卡与任务/03_关卡与任务文本/04_关卡BGM.md","words":939,"doc":"docs/04_关卡BGM.md.js","id":"","title":"04_关卡BGM","sub":"归档","cat":"03_关卡与任务","thumb":null},
  {"file":"pages/归档/04_道具与装备/04_道具与装备文案/01_一、道具与素材.md","words":48291,"doc":"docs/01_一、道具与素材.md.js","id":"","title":"01_一、道具与素材","sub":"归档","cat":"04_道具与装备","thumb":null},
  {"file":"pages/归档/04_道具与装备/04_道具与装备文案/02_二、礼包与月卡.md","words":15522,"doc":"docs/02_二、礼包与月卡.md.js","id":"","title":"02_二、礼包与月卡","sub":"归档","cat":"04_道具与装备","thumb":null},
  {"file":"pages/归档/04_道具与装备/04_道具与装备文案/03_三、装备.md","words":421,"doc":"docs/03_三、装备.md.js","id":"","title":"03_三、装备","sub":"归档","cat":"04_道具与装备","thumb":null},
