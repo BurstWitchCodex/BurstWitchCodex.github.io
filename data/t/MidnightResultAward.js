@@ -1,0 +1,1 @@
+window.DB_TABLES=window.DB_TABLES||{};window.DB_TABLES["MidnightResultAward"]={"name":"midnightresultaward","accessor":"MidnightResultAward","fields":["id","kill_number","Midnight_award_item"],"keyIndex":[1,2,3],"ids":["10001","10002","10003"],"rows":[[10001,1,[1000008,30]],[10002,2,[1000008,45]],[10003,3,[1000008,72]]]};

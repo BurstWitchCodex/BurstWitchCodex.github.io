@@ -1,0 +1,1 @@
+window.DB_TABLES=window.DB_TABLES||{};window.DB_TABLES["increasing"]={"name":"increasing","accessor":"increasing","fields":["id","inr_target","inr_params","inr_num"],"keyIndex":[1,2,3,4],"ids":["101"],"rows":[[101,[2,10,4],[0.05],2]]};

@@ -1,0 +1,125 @@
+/* 爆裂魔女 · 网页版样式表
+ * 结构：变量与基础元素 → 正文元素（md2html 产出）→ 侧栏菜单 → 文档区。
+ * 每条规则都由 tools/css_census.js 的实渲染普查证明在用；旧版 SPA 遗留样式已删除。
+ */
+:root{--bg:#12141a;--fg:#e8eaf0;--card:#1a1e26;--line:#2b3140;--acc:#6bb3ff;--warn:#ffb454;--bad:#ff6b6b}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font:15px/1.7 "Segoe UI","Microsoft YaHei",system-ui,sans-serif}
+h1{font-size:24px;margin:6px 0 4px}
+h3{font-size:15px;margin:0 0 10px;color:var(--acc)}
+h4{margin:14px 0 6px;font-size:13.5px;color:#b9c3d6;font-weight:600}
+a{color:var(--acc);text-decoration:none}a:hover{text-decoration:underline}
+.lead{color:#aab3c5;margin:2px 0 18px}
+.dim{color:#8b93a5;font-size:13px}.empty{color:#7c8496;font-style:italic}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:14px 16px;margin:0 0 14px}
+.load{padding:40px;text-align:center;color:#8b93a5}
+
+/* ---------- 正文元素（tools/css_census.js 渲染 75 篇后确认在用） ---------- */
+table.tbl{border-collapse:collapse;width:100%;font-size:13.5px}
+.tbl th,.tbl td{border-bottom:1px solid var(--line);padding:5px 8px;text-align:left;vertical-align:top}
+.tbl th{background:#171b22;color:#b9c3d6;position:sticky;top:44px;z-index:2}
+.tbl tr:hover td{background:#1f2532}
+.miss{color:var(--bad);font-size:12px;border:1px dashed #5a2b2b;border-radius:6px;padding:2px 6px}
+img{max-width:100%;height:auto;image-rendering:auto;border-radius:6px;background:#0d1016}
+.pager{margin:8px 0 12px;font-size:13.5px}.pager a{margin:0 8px}.pager span{color:#8b93a5}
+footer{max-width:1180px;margin:0 auto;padding:16px 22px 40px;border-top:1px solid var(--line);color:#7f889b;font-size:12.5px}
+footer code{background:#0f1218;padding:1px 5px;border-radius:4px}
+
+/* 图片墙：归档正文里的 <a class="figlink"> 缩略图点开原图 */
+.figlink{display:inline-block;margin:2px 6px 2px 0;vertical-align:top}
+.figlink img{transition:transform .12s ease}
+.figlink:hover img{transform:scale(1.02);outline:1px solid var(--acc)}
+
+/* ---------- viewer 版式（index.html + js/viewer.js 使用） ---------- */
+.wrap{display:grid;grid-template-columns:296px minmax(0,1fr);gap:0;min-height:100vh}
+.side{position:sticky;top:0;align-self:start;max-height:100vh;overflow:auto;padding:16px 12px 12px;
+  background:#151821;border-right:1px solid var(--line);overscroll-behavior:contain}
+.brand{font-size:17px;font-weight:700;color:#fff;line-height:1.35;margin:0 0 12px;padding:0 4px}
+.brand span{font-size:12px;font-weight:400;color:#8b93a5}
+.q{width:100%;background:#0f1218;border:1px solid var(--line);color:var(--fg);
+  padding:8px 11px;border-radius:8px;font-size:13.5px;margin:0 0 10px}
+.q:focus{outline:none;border-color:var(--acc)}
+.list{display:flex;flex-direction:column;gap:2px}
+/* 侧栏已去掉「资料目录」包裹层：.grp 是一级分组，.subgrp 是二级分组 */
+.grp>summary{list-style:none;cursor:pointer;display:flex;align-items:center;gap:6px;
+  -webkit-user-select:none;user-select:none}
+.grp>summary::-webkit-details-marker{display:none}
+.ttl{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.car{width:11px;flex:0 0 11px;color:#666f82;display:inline-block;transition:transform .12s ease}
+details:not([open])>summary .car{transform:rotate(-90deg)}
+.grp{display:flex;flex-direction:column;margin:0 0 6px}
+/* 一级分组标题就是那一行带框的条，不再需要外层容器 */
+.ghead{background:#1a1f2b;border:1px solid var(--line);border-radius:9px;padding:8px 10px;
+  font-size:13.5px;font-weight:600;letter-spacing:.02em;color:#e8eaf0;margin:0}
+.ghead:hover{color:#fff;background:#22293a}
+.ghead i{font-style:normal;margin-left:auto;color:#93a0b8;font-size:12px;font-weight:400}
+.grp-body{display:flex;flex-direction:column;gap:2px;margin:0 0 4px 14px;padding-left:8px;
+  border-left:1px dashed #2a3245}
+/* 页首装束图鉴：缩略图横向并排，每张下面依次是 装束名 / 获取方式 / 描述
+   （用 span 做行内块，因为渲染器会把整段包进 <p class="para">，div 套在 p 里是非法嵌套） */
+.skins{display:flex;flex-wrap:wrap;gap:10px;margin:10px 0 6px}
+.skin{display:flex;flex-direction:column;width:196px;background:#12151d;border:1px solid var(--line);
+  border-radius:10px;padding:8px 9px;vertical-align:top}
+.skin img{width:100%;height:auto;display:block;border-radius:6px}
+.sname{display:block;margin:7px 0 2px;font-size:13px;font-weight:600;color:#e8eaf0;line-height:1.4}
+.sget{display:block;margin:0 0 5px;font-size:11.5px;color:#93a0b8}
+.sdesc{display:block;margin:0;font-size:12px;line-height:1.75;color:#aab3c5}
+.snoimg{display:block;height:96px;line-height:96px;text-align:center;background:#0f1218;
+  border:1px dashed #3a2b2b;border-radius:6px;font-size:11.5px;color:#8b93a5}
+
+/* 三级里的二级分组：归档的大文章、角色的编号段；cat 为空的（汇总）不会生成这一层 */
+.subgrp{display:flex;flex-direction:column}
+.subgrp>summary{list-style:none;cursor:pointer;display:flex;align-items:center;gap:6px;
+  -webkit-user-select:none;user-select:none}
+.subgrp>summary::-webkit-details-marker{display:none}
+/* 二级分组：比一级略小、但不能再比正文条目还小还暗 */
+.chead{font-size:12.5px;font-weight:600;color:#a9b4c8;margin:4px 2px;padding:3px 5px;border-radius:6px}
+.chead:hover{color:#fff;background:#1c2130}
+.chead i{font-style:normal;margin-left:auto;color:#8b93a5;font-size:11.5px;font-weight:400}
+.sub-body{display:flex;flex-direction:column;gap:2px;margin:0 0 4px 12px;padding-left:6px;
+  border-left:1px dashed #232a3a}
+.item{display:flex;gap:9px;align-items:center;padding:5px 7px;border-radius:8px;
+  border:1px solid transparent;color:var(--fg)}
+.item:hover{background:#1c2130;border-color:var(--line);text-decoration:none}
+.item.on{background:#222c40;border-color:#3c5a8a}
+.item .avatar{width:30px;height:30px;flex:0 0 30px;object-fit:cover;border-radius:6px;background:#0d1016}
+.item .meta{min-width:0}
+.item .nm{font-size:13.5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.item .pid{font-style:normal;color:#6b7488;font-size:11.5px;margin-right:6px;font-variant-numeric:tabular-nums}
+.item .sub{font-size:11.5px;color:#666f82}
+/* 顶上的「主页」：不分组，单独一条，与分组列表用底边分隔 */
+.item.top{margin:0 0 10px;padding:9px 10px;background:#12151d;border:1px solid var(--line);border-radius:9px}
+.item.top:hover{background:#1a2130}
+.count{position:sticky;bottom:0;background:#151821;padding:8px 6px 2px;font-size:11.5px;color:#7f889b;
+  border-top:1px solid var(--line);margin-top:12px}
+.doc{padding:20px 30px 40px;min-width:0;max-width:1020px}
+.docbar{display:flex;flex-wrap:wrap;gap:10px;align-items:baseline;font-size:12px;color:#7f889b;
+  border-bottom:1px solid var(--line);padding:0 0 8px;margin:0 0 14px}
+.docbar .path{font-family:Consolas,monospace;color:#9aa4b8}
+.docbar .sz{color:#666f82}
+.docbar .find{margin-left:auto;display:flex;gap:6px;align-items:center}
+.docbar .find button{background:#2b3550;border:1px solid #3a466a;color:#dfe6f5;border-radius:6px;
+  width:26px;height:22px;line-height:1;cursor:pointer}
+.docbar .find .none{color:var(--warn)}
+.toc{margin:0 0 16px;background:var(--card);border:1px solid var(--line);border-radius:10px;padding:8px 14px}
+.toc summary{cursor:pointer;font-size:13px;color:#b9c3d6}
+.toc ul{list-style:none;margin:8px 0 0;padding:0;columns:2;column-gap:26px;font-size:13px}
+.toc li{padding:1px 0;break-inside:avoid}
+.toc li.t3{padding-left:14px;color:#8b93a5}
+.toc li a{color:#b9c3d6}
+mark{background:#3a2f14;color:#ffd68a;border-radius:3px;padding:0 2px}
+mark.hit.now{background:#6b5320;outline:1px solid #a98b3d}
+.code{background:#0f1218;border:1px solid var(--line);border-radius:8px;padding:10px 12px;overflow:auto;
+  font:12.5px/1.6 Consolas,monospace;white-space:pre-wrap;word-break:break-all}
+.inline,code.inline{background:#0f1218;padding:1px 5px;border-radius:4px;font-family:Consolas,monospace;font-size:12.5px}
+.quote{margin:6px 0;padding:6px 12px;border-left:3px solid #33405c;background:#10131a;color:#dde3ef;border-radius:0 8px 8px 0}
+.md-list{margin:6px 0;padding-left:22px}
+
+/* 隐藏可见滚动条但保留滚动：侧栏、清单、表格容器、代码块、文档栏 */
+.side,.list,.tblwrap,pre.code,.docbar{scrollbar-width:none;-ms-overflow-style:none}
+.side::-webkit-scrollbar,.list::-webkit-scrollbar,.tblwrap::-webkit-scrollbar,
+pre.code::-webkit-scrollbar,.docbar::-webkit-scrollbar{width:0;height:0;display:none}
+.tblwrap{position:relative}
+.tblwrap:hover{box-shadow:inset 0 0 0 1px #33405c}
+.tblwrap:hover::after{content:"可横向滚动";position:absolute;right:2px;top:2px;font-size:10.5px;
+  color:#7f889b;background:#151821;border:1px solid var(--line);border-radius:4px;padding:0 5px}

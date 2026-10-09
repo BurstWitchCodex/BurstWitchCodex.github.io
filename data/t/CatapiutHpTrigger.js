@@ -1,0 +1,1 @@
+window.DB_TABLES=window.DB_TABLES||{};window.DB_TABLES["CatapiutHpTrigger"]={"name":"catapiuthptrigger","accessor":"CatapiutHpTrigger","fields":["id","levelId","catapiutId","buffId","buffLevel","hpPer"],"keyIndex":[1,2,3,4,5,6],"ids":["1","2","3","4"],"rows":[[1,420001,4201,10214,1,0.1],[2,420001,4201,10214,2,0.07],[3,420001,4201,10214,3,0.05],[4,420001,4201,10214,4,0.03]]};

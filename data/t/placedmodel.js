@@ -1,0 +1,1 @@
+window.DB_TABLES=window.DB_TABLES||{};window.DB_TABLES["placedmodel"]={"name":"placedmodel","accessor":"placedmodel","fields":["id","MaximumTime","BonusTime","StatisticalTasks"],"keyIndex":[1,2,3,4],"ids":["1"],"rows":[[1,259200,60,[1313203,1313204,1313205]]]};

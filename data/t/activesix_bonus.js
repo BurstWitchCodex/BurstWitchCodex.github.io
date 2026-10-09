@@ -1,0 +1,1 @@
+window.DB_TABLES=window.DB_TABLES||{};window.DB_TABLES["activesix_bonus"]={"name":"activesix_bonus","accessor":"activesix_bonus","fields":["id","activeid","bonus_role"],"keyIndex":[1,2,3],"ids":["1"],"rows":[[1,2021,[[1010,10,8800041],[1025,10,8800041],[1034,10,8800041]]]]};

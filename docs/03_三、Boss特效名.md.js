@@ -1,0 +1,2 @@
+/* pages/归档/06_敌人与Boss/06_敌人与Boss文本/03_三、Boss特效名.md 的原样包装，由 tools/pages_build.js 生成；文案唯一来源是 pages 下的 md，要改正文改 md，不要改本文件。 */
+window.DB_DOC=window.DB_DOC||{};window.DB_DOC["pages/归档/06_敌人与Boss/06_敌人与Boss文本/03_三、Boss特效名.md"]="# 三、Boss 特效名（仅内部标识）\n\n- 10102030 ｜ `change`\n- 10102030 ｜ `call`\n- 10103020 ｜ `3`\n- 10104020 ｜ `step01`\n- 10401200 ｜ `2`\n- 10401120 ｜ `step01`\n- 10105020 ｜ `3`\n- 10401130 ｜ `3`\n- 10103020 ｜ `change`\n- 10103030 ｜ `change`\n- 10401210 ｜ `change`\n- 10401210 ｜ `call`\n- 10103020 ｜ `enter`\n";

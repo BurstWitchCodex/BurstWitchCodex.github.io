@@ -1,0 +1,1 @@
+window.DB_TABLES=window.DB_TABLES||{};window.DB_TABLES["MailClick"]={"name":"mailclick","accessor":"MailClick","fields":["id","Defid","Duration","Awards"],"keyIndex":[1,2,3,4],"ids":["1","2"],"rows":[[1,1011,1209600,[[4,7000007,1]]],[2,1011,1209600,[[4,7000007,1]]]]};

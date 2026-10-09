@@ -1,0 +1,180 @@
+# 爆裂魔女 · 网页版（角色 / 羁绊 / 文案归档）
+
+纯静态：`.md` 正文 + 一份清单 + 逐文件原样包装。**无构建依赖、无后端、无第三方库、不用 fetch/XHR**。
+
+## 两条硬规则
+
+1. **文案唯一来源是 `pages/` 下的 md。** `data/` 里的配置表与词条**不再向正文供字**；
+   没有任何在用脚本会往 md 写文字（做过的生成器全部退役到 `tools/_retired/`）。要改文案，改 md，然后跑 `update.bat`。
+2. **md 里的资源路径一律按站点根写，禁止 `../` 前缀。** 正文被注入 `网页版/index.html` 的 DOM，
+   浏览器解析相对路径的基准是 `index.html` 所在目录，**与 md 在哪个子目录无关**。
+   所以角色页哪怕在 `pages/角色/` 里，也照样写 `media/thumb/…`、`pages/归档/…`。
+   `pages_build.js` 的自检会按站点根校验每条 `src`/`href`，见到 `../` 直接报问题。
+   （这条是我踩过坑之后写死的：曾经给移动后的角色页加过 `../../media/…` 前缀，那会让 64 页的图全断，
+   已由 `tools/_retired/pages_fix_paths.js` 全部还原为站点根写法。）
+
+## 打开方式
+
+双击 `index.html`（`file://`）即可。要分享或让 168 MB 音频走 HTTP 流式，把 `网页版/` 交给任意静态服务器。
+
+**音频已是 MP3**：`media/sound/` 是 1769 个 `.mp3` / 162 MB（原 1.24 GB WAV）；语音 96 kbps 单声道 1757 个、`MusicBook-*` 乐曲 160 kbps 立体声 12 个，合计 3.68 小时。
+2026-10 全量体检：1769/1769 可解码、异常 0（`node tools/audio_check.js`）。本站不保留 WAV 母本，音频只需要 MP3。
+
+## 目录结构
+
+```
+网页版/
+├── index.html          入口：侧栏 + 正文容器 + favicon，只加载 pagelist.js 与 viewer.js
+├── favicon.png         站点图标（181×184 PNG）
+├── update.bat          两步：pages_build.js 构建 → 打开页面
+├── css/app.css         全部样式（88 条规则，全部经 css_census.js 实渲染证明在用）
+├── js/viewer.js        清单渲染（三级折叠）、hash 路由、Markdown 渲染、页内查找
+├── pages/              ★ 文案唯一来源
+│   ├── 主页.md            进站默认页（站点介绍与已知缺口）  → 一级「主页」（侧栏第一条）
+│   ├── 羁绊.md            羁绊全量                        → 一级「汇总」
+│   ├── 角色/<id>_<名>.md  65 篇                          → 一级「角色」+ 二级编号段/形态（含未实装 1043）
+│   └── 归档/<分类>/<大文章>/<篇>.md  81 篇               → 一级「归档」+ 二级分类
+├── docs/               每篇 md 的原样包装 148 份 <名>.md.js（勿手改，pages_build.js 重生成）
+├── data/
+│   ├── pagelist.js     ★ 清单：file / doc / id / title / sub / cat / thumb / words
+│   ├── assets.js · voices.js · meta.js · report.js · i18n_chs.js · t/*.js
+│   │                   抽取层产物：只有素材定位（搬图/搬音）还会用到，正文不再读取
+├── media/              sound 1769 个 mp3 / 168 MB、img 498 张 / 431 MB、thumb 1077 张 / 76 MB
+│                       —— 全部被正文或清单引用，零未引用残留（文件名已不含空格）
+├── 站点合计          766 MB（转码前 1.9 GB）
+└── tools/              见「脚本清单」
+```
+
+侧栏已经**没有「资料目录」这层包裹**，从上到下是：先一条「主页」（不分组，进站默认页），再三层结构 **一级分组（sub）→ 二级分组（cat）→ 文章条目**：
+
+| 一级 | 二级 | 条目 |
+|---|---|---:|
+| 主页 | —（单独一条） | 1 篇 |
+| 汇总 | —（cat 为空，条目直挂一级） | 羁绊 1 篇 |
+| 角色 | 初版角色（1001–1042）／后续追加（1044–1099）／特殊形态／未实装（1043）／夏日系列 | 65 篇 |
+| 归档 | 10 个分类（01_主线剧情与外传 … 10_战斗对白） | 81 篇 |
+
+角色二级分组从文件名即可判定（`1043` = 未实装；`12xx` 或名字以「夏日」开头 = 夏日系列；「梦魇／圣羽／净界／含间隔号」= 特殊形态；其余按编号段），不查任何表。
+头像回退：先找 `media/thumb/source_avatar/hero/body_<id>_body_<id>.png`，没有再试好感立绘位 `media/thumb/source_avatar/haogan/haogan_<id>_….png`，两边都没就 `thumb: null`（不编造）——1043 就是靠这个回退拿到头像的（她只有 haogan 图，包内没有 body 主立绘）。
+
+## 归档的拆分口径（`tools/_retired/pages_split_archive.js`）
+
+- 一个 `## 大标题` = 一篇小文章；**不跨大标题合并**（要压缩零碎小节用 `--min-chars`）。
+- 小文章放进**大文章同名文件夹**：`pages/归档/04_道具与装备/04_道具与装备文案/04-01_一、道具与素材.md`；
+  同级还有该分类的 `图片/`、`音频/`。原大文章 md 切完即删，内容一条不丢。
+- 每篇顶部保留 `# <大文章> · <本节>` 与 `> 出自《…》（归档 · <分类>）`，原大文章开头的引导文字只给第一篇（不重复、不丢）。
+- 单篇超 `--max-chars`（默认 60000 字）时按正文 `**标签**` 组边界再切，加「（第N部分）」。
+- 文件名 `<文章号>-<节号>_<节名>.md`，保证 basename 全局唯一（`docs/` 是扁平目录）。
+- 幂等：重跑先按前缀清掉本工具生成件再重切。
+- **零碎小节靠 `tools/_retired/pages_compact.js` 合并**：10_战斗对白 本身有 168 个 `##`（35 片不到 2000 字、最短 93 字），
+  已用 `--folder … --min-chars 20000` 合成 **25 篇**（每篇 2–2.4 万字）。归档当前合计 **81 篇**：3+4+4+10+7+5+7+11+5+25（其中 08 的「四」由 1 篇样例补全成 7 个部分，故该分类 5→11）。
+  第一版合并它时按文件名字典序读切片，把 key 109 塞到了 key 11 前面；现在按编号数值 + 小节标题里的数字排序，
+  168 个小节全在、key 从 0 到 60046 零逆序（引导文字只在第一篇）。
+
+## 页面与操作
+
+- **侧栏**：顶部一条「主页」（进站默认页），往下「一级分组 → 二级分组 → 条目」三层折叠，没有额外的包裹容器。
+  展开状态记在内存，筛选/换页不丢；当前正文所在的一二级自动展开；筛选时命中的分组自动全展开。
+- **统一排版**：65 个角色页结构一致（模板 = 1001_安娜.md）：基本信息 → 基础属性 → 角色剧情 → 技能 → 天赋 → 语音 → 装束 → 羁绊；63 页共 1,512 对，未覆盖 0）；「### 档案一/二/三/四」子标题已按模板换成真实篇名（232 处上移，正文里那行《篇名》移上来、不留重复行；4 处本来没有篇名行的保持 档案N）；6 个夏日角色在 Story 表内无文本，故「角色剧情」下无子标题，13 个角色（含 1043）在 FetterCard 里无配置，故无「羁绊」小节——都是数据本身如此，不是漏页。工具 `tools/_retired/pages_roles_uniform.js` 带双向守恒校验，对不上就拒写。
+- **正文**：长文自动生成分栏目录；文末上一页/下一页；图片取不到显示红色「缺文件」并保留原图路径。角色页现在 241 个图链接全部可点开（0 张裸 markdown 图）。
+- **装束图鉴**：`tools/_retired/pages_skin_gallery.js` 在主立绘下方生成横向并排卡片（`.skins`/`.skin`/`.sname`/`.sget`/`.sdesc`，用 span 而非 div，因为渲染器会把整段包进 `<p class="para">`），装束名/获取方式/描述逐字取自该页原有 `## 装束` 行文，图片由 Skin 表按 heroid + 装束名定位：62 套用各自皮肤立绘 `source_avatar/hero/body_<皮肤id>`、64 套默认皮肤复用主立绘、1 套（1035 月光神使）包内无图，卡片上如实写「包内无该套装束立绘」而不是放坏图；旧 `## 装束` 小节因文字已进卡片而删除（64 页，逐条覆盖校验通过才删）。`tools/_retired/pages_portrait_links.js` 另把 51 张好感立绘与全部主立绘补上 media/img 原图并包成可点开链接（角色页现在 0 张裸图、241 个图链接）。
+  图片/音频这类**资源直链一律 `target="_blank"` 开新标签页**（在 `viewer.js` 渲染层统一加，md 里不写 target），
+  因为正文靠 hash 路由，在当前页打开原图会顶掉阅读位置；站内 `.md` 跳转与目录锚点 `#hN` 不受影响。
+- **页内查找**：筛选框输入后按**回车**标黄，↑ ↓ 逐处跳转，`Esc` 清空。
+- **角色语音表**：角色页的「## 语音」四列表，固定排在「天赋」之后、「装束」之前；1560 行、中配 1181 / 日配 803（1043 的 24 条全有中配、无日配）；播放器用 `media/sound/*.mp3`，已逐个复验与 WAV 母本时长一致。
+- **好感立绘缺图**：14 个角色的好感立绘在解包里根本不存在，正文中已删除。没有一张是这些角色的好感立绘；也没有拿别的立绘顶替。
+
+## 为什么还要 docs/ 包装
+
+`file://` 下 fetch 读不到同目录文件，`<script src>` 能。构建器把每份 md **原文**包成
+`window.DB_DOC["pages/…"] = "…"`（只做 JSON 转义，`</` 写成 `<\/`，处理 U+2028/29，正文一字不动）。
+所以改了 md 必须重跑 `update.bat`，页面才会变。
+
+## 脚本清单
+
+**日常（留在 `tools/`，共 7 个）**
+
+| 脚本 | 作用 |
+| --- | --- |
+| `tools/pages_build.js` | 扫 `pages/**/*.md` → 生成 `pagelist.js` 与 `docs/*.md.js` + 自检（重名/缺包装/资源按站点根是否存在）。只读 md 和清单，**不写 md**。`--check` 不写盘 |
+| `update.bat` | 两步：跑 `pages_build.js`，然后打开页面 |
+| `tools/make_thumbs.js` | 零依赖 PNG：解码 → 裁透明边 → alpha 加权面积平均缩放 → 自适应 filter 重编码；带 `--selftest`（解→重编→再解逐字节相等）。只写 media 图，不碰 md |
+| `tools/audio_check.js` | MP3 体检（只读，不依赖任何母本）：逐个用 ffmpeg 解开，报异常/时长/码率分布 |
+| `tools/site_move_unused.js` | 把没被引用的素材按原路径搬进 `_未引用资源/`（`--dry` 先看） |
+| `tools/css_census.js` | 用 `viewer.js` 自己的 `md2html()` 渲染全部 md，对表 `app.css` 找死规则（只读） |
+| `tools/pages_archive_media.js`、`tools/pages_archive_audio.js` | 从 `_export` 按字段值搬归档图/音（只搬文件）。重跑会把已搬进 `_未引用资源/` 的东西再拷回来 |
+| `tools/site_update.js` | 旧打包器存根，只转发到 `pages_build.js`（兼容旧 .bat） |
+
+**一次性整理（已移到 `tools/_retired/`，都往 md 里写过内容，跑完即收）**
+
+| 脚本 | 当时做的事 |
+| --- | --- |
+| `_retired/pages_restructure.js` | 14 处缺图引用改文字占位；角色页移入 `pages/角色/`（不改资源路径） |
+| `_retired/pages_split_archive.js` | 归档按 `##` 大标题裁切成小文章（10 → 218 篇，10 独占 168） |
+| `_retired/pages_compact.js` | 10_战斗对白按字数合并零碎小节（168 → 25 篇） |
+| `_retired/pages_complete_04.js` | 08「四、其余未引用词条」从 30 条样例补全为全量 |
+| `_retired/pages_dedupe.js` | 08 内正文逐字相同的 `#### 词条` 块合并（673→175 等） |
+| `_retired/pages_roles_uniform.js` | 65 个角色页统一成 1001 结构；删重复台词小节；档案子标题上移成《篇名》 |
+| `_retired/pages_use_thumbs.js` | 显示原图的引用改成「缩略图 + 点开原图」 |
+| `_retired/pages_portrait_links.js` | 主/好感立绘补 `media/img` 原图并包成可点开链接 |
+| `_retired/pages_skin_gallery.js` | 主立绘下方生成装束并排卡片（名/获取方式/描述） |
+| `_retired/pages_audio_ext.js` | 把 1996 处 `media/sound/*.wav` 引用改成 `.mp3`（只改扩展名，要求残留 0 / 断链 0） |
+| `_retired/pages_fix_paths.js` | 把误加的 `../` 前缀还原成站点根写法并全量校验 |
+
+这些脚本移到 `_retired/` 后仍能跑（内部会自己上溯找站点根），但**默认不该再跑**：
+它们会重写 md 内容，而你手改的 md 现在是文案唯一来源。真要重跑先 `--dry` 看报告。
+
+**已退役的反向生成器**：`_retired/` 里还有 `web_pages.py`、`pages_voice_table.js`、`pages_archive_gallery.js`、
+`pages_bgm_links.js`、`pages_season_fix.js` —— 它们从 `data/t` 与词条生成正文，与“文案只从 pages 取”直接相冲，勿运行。
+
+**图像处理**：`make_thumbs.js`。
+
+## 数据链路
+
+APK → Lua 明文（标准 XXTEA，8 字节运行时密钥，1132 份，已逐字节回 encrypt 验证）→ `web_extract.py`
+（自研 Lua 字面量递归下降解析器，字段名取各表自带 `_configKeys`，270/271 张，异常记入 `report.js`）→
+`data/` →（历史上）`web_pages.py` 出 md。**现在 md 是手改面**，`data/` 只在素材定位时用到。。
+
+## 已知遗留
+
+- 14 张好感立绘不存在（见上），已改文字占位。
+- **1043 维多利亚（未实装）已成页**：`CardCharacter` 无此行 → 无品质/职业/CV/属性/技能/装束表数据；但包内有她的 `dialogue` 24 条（中配 35 个 `1043-*` bank，已拷入 `media/sound/`）、`Story` 10430001–10430004 四篇档案、`Skin` 10430001 装束署名「斯托拉蒂」、一张好感立绘与三张技能图标（图标因无技能文案而未列）。
+  页面文字全部从「归档 · 08_未引用与删减」第五节逐字取用，表只用来对「场景 ↔ 语音文件」的结构关系；两处文字同源并存，要只留一处告诉我删哪边。她的 `voice_jp` 全为 `-1`（没配日配，不是文件缺失）。
+- 2 个角色页曾无头像 → 已补（`1239`、`1245`，用 `_export` 原图生成 `media/img` + `media/thumb`），现在无头像角色 0。
+- 归档主图的 `_1` 图集分块页在 `_未引用资源/`（母图在站内）。显示无影响：`viewer.js` 不做图集拼合。
+- `_未引用资源/` 1.43 GB / 3201 个：约 820 MB 从未显示过（运营图集、通用音效等）、565 MB 是废弃的「语音样本」块遗留、
+  923 个是图集分块页（其中真正带母图的 340 个 / 121 MB）。等你手动删。
+- `docs/` 是扁平目录 ⇒ md 文件名必须全站唯一，`pages_build.js` 会拒绝重名并退出非 0。
+
+## 部署到 GitHub Pages
+
+仓库根就是站点根（`index.html` 在顶层），已备好三样东西：
+
+| 文件 | 作用 |
+| --- | --- |
+| `.nojekyll` | 关掉 Jekyll 处理，文件原样发布（含 `_` 开头目录与 `.md`） |
+| `.gitignore` | 排除临时产物与**本机专用脚本**：`node_modules/`、`_site/`、`_未引用资源/`、`*.tsv`、`*.log`、缩略图缓存，以及 `update.bat`、`tools/_retired/`、`tools/一键更新文章.bat`（这三项不入库，只在本地用） |
+| `.github/workflows/deploy.yml` | push 到 `main` 时把 `index.html favicon.png README.md css js data docs pages media` 拷进 `_site` 再发布；**`tools/` 与 `update.bat` 不进产物** |
+
+> 注：`tools/_retired/` 与 `update.bat` 已列入 `.gitignore`，属于“只在本机跑的一次性工具与本地启动器”，仓库与站点都不依赖它们；需要重用时回到本地目录执行即可。
+
+开启方式：GitHub 仓库 → Settings → Pages → Build and deployment → **Source: GitHub Actions**，然后 `git push`，Actions 会跑 “Deploy Pages”。
+
+仓库地址：`https://github.com/BurstWitch-Codex/BurstWitchCodex.github.io.git`（已验证可连、当前是空仓库）。
+**注意命名坑**：GitHub 只有在**仓库名 = `<账号名>.github.io`**（大小写不敏感，但连字符必须一致）时才把它当“用户站”发布到根路径。
+现在账号是 `BurstWitch-Codex`、仓库是 `BurstWitchCodex.github.io`，差一个连字符 → 会按**项目站**发布，地址是
+`https://burstwitch-codex.github.io/BurstWitchCodex.github.io/`。
+两种选择：① 不改名字，直接用上面的子路径（本站引用全是站点根相对路径，实测 5568 条资源引用里 `../` 与 `/` 开头 0 条，**子路径下照常工作**）；
+② 想要根路径 `https://burstwitch-codex.github.io/`，就在 GitHub 上把仓库改名为 `BurstWitch-Codex.github.io`，然后本地同步：`git remote set-url origin https://github.com/BurstWitch-Codex/BurstWitch-Codex.github.io.git`。
+
+**体积与带宽（照实说）**：站点内容 **765 MB**（转码音频前是 1.9 GB），在 Pages 的 1 GB 软限内；带宽软限 100 GB/月 —— 音频是 `<audio preload="none">`、图片是 `loading="lazy"`，只有真正点开的内容才下载，但一个人把全站图和音全点一遍约 700 MB，量级上约 140 次“全量访问”就会顶到软限。
+
+**文件名已无空格**：`pages/` 下 32 个带空格的 md 已去空格改名（`tools/_retired/pages_rename_nospace.js`，带撞名检查），`docs/` 与清单随后重生成；现在全站 4535 个文件里 basename 含空格的是 **0** 个，URL 里不会再出现 `%20`。
+
+**首次推送**（`user.name` / `user.email` 已配好）：
+
+```
+git add -A
+git commit -m "站点初始化：148 篇文章 + 1769 段 MP3 + 5324 张图"
+git push -u origin main
+```

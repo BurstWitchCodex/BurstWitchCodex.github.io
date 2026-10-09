@@ -1,0 +1,1 @@
+window.DB_TABLES=window.DB_TABLES||{};window.DB_TABLES["DoveCardDeny"]={"name":"dovecarddeny","accessor":"DoveCardDeny","fields":["id","DoveType","DoveDenyCardIds"],"keyIndex":[1,2,3],"ids":["1","2","3"],"rows":[[1,2,[2001,2002]],[2,3,[3001,3002]],[3,3,[3003,3004]]]};

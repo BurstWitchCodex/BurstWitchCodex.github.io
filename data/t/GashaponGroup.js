@@ -1,0 +1,1 @@
+window.DB_TABLES=window.DB_TABLES||{};window.DB_TABLES["GashaponGroup"]={"name":"gashapongroup","accessor":"GashaponGroup","fields":["id","Gashaponlistid"],"keyIndex":[1,2],"ids":["1","2"],"rows":[[1,[5001,5002,5003,5004,5005,5006]],[2,[5007,5008,5009,5010,5011,5012]]]};

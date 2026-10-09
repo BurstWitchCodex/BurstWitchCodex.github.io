@@ -1,0 +1,1 @@
+window.DB_TABLES=window.DB_TABLES||{};window.DB_TABLES["CriticalParam"]={"name":"criticalparam","accessor":"CriticalParam","fields":["id","hit_param","hit_multi","hit_base","hit_max","dmg_param","dmg_multi","dmg_base","dmg_max"],"keyIndex":[1,2,3,4,5,6,7,8,9],"ids":["1"],"rows":[[1,4500,1,0,0.8,4000,4,1.7,5]]};

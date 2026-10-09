@@ -1,0 +1,1 @@
+window.DB_TABLES=window.DB_TABLES||{};window.DB_TABLES["UserAgreement"]={"name":"useragreement","accessor":"UserAgreement","fields":["id","title","desc"],"keyIndex":[1,2,3],"ids":["1"],"rows":[[1,10460001,10460002]]};

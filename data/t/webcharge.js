@@ -1,0 +1,1 @@
+window.DB_TABLES=window.DB_TABLES||{};window.DB_TABLES["webcharge"]={"name":"webcharge","accessor":"webcharge","fields":["id","charge_id"],"keyIndex":[1,2],"ids":["45"],"rows":[[45,260011]]};

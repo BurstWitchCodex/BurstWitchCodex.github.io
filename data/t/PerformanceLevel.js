@@ -1,0 +1,1 @@
+window.DB_TABLES=window.DB_TABLES||{};window.DB_TABLES["PerformanceLevel"]={"name":"performancelevel","accessor":"PerformanceLevel","fields":["id","mid","high"],"keyIndex":[1,2,3],"ids":["1"],"rows":[[1,200,85]]};

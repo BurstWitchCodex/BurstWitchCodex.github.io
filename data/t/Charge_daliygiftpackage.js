@@ -1,0 +1,1 @@
+window.DB_TABLES=window.DB_TABLES||{};window.DB_TABLES["Charge_daliygiftpackage"]={"name":"charge_daliygiftpackage","accessor":"Charge_daliygiftpackage","fields":["id","days","ChargeId_b","FreeIds","ChargeId_s"],"keyIndex":[1,2,3,4,5],"ids":["1"],"rows":[[1,7,9101,[[940101,0],[940102,1],[940103,3],[940104,4],[940105,6],[940106,7],[940107,9],[940108,10]],[9402,9403,9404]]]};

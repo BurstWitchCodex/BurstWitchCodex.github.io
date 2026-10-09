@@ -1,0 +1,1 @@
+window.DB_TABLES=window.DB_TABLES||{};window.DB_TABLES["active_recharge"]={"name":"active_recharge","accessor":"active_recharge","fields":["id","UID","Quest_child_classId","ruleid","hide_quest_time"],"keyIndex":[1,2,3,4,5],"ids":["1"],"rows":[[1,80001,1501,-1,null]]};

@@ -1,0 +1,1 @@
+window.DB_TABLES=window.DB_TABLES||{};window.DB_TABLES["MusicHall"]={"name":"musichall","accessor":"MusicHall","fields":["id","Icon","OpenLevel","OpenTime_begin","HotBookPoolID","HelpSeat","IsPubShow"],"keyIndex":[1,2,3,4,5,6,7],"ids":["1","2","3","4"],"rows":[[1,1,20,0,0,0,0],[2,2,25,0,0,0,0],[3,3,35,0,0,0,0],[4,4,0,500001,1001,5,1]]};

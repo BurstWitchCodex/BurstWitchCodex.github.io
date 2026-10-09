@@ -1,0 +1,1 @@
+window.DB_TABLES=window.DB_TABLES||{};window.DB_TABLES["Activity"]={"name":"activity","accessor":"Activity","fields":["id","icon","spine","Name"],"keyIndex":[1,2,3,4],"ids":["1","2"],"rows":[[1,"source_uiActivaty/ui_ActivatyFrameWork/xct1","-1","Activity_seven"],[2,"-1","prefab_uiPlayerModel/playerSpine/character_1021","Quest"]]};

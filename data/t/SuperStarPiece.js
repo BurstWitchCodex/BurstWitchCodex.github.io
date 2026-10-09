@@ -1,0 +1,1 @@
+window.DB_TABLES=window.DB_TABLES||{};window.DB_TABLES["SuperStarPiece"]={"name":"superstarpiece","accessor":"SuperStarPiece","fields":["id","Quality_min","Quality_max","Senior"],"keyIndex":[1,2,3,4],"ids":["3000000"],"rows":[[3000000,1,4,1]]};

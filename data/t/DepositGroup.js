@@ -1,0 +1,1 @@
+window.DB_TABLES=window.DB_TABLES||{};window.DB_TABLES["DepositGroup"]={"name":"depositgroup","accessor":"DepositGroup","fields":["UID"],"keyIndex":[1],"ids":["31003","300014","300034"],"rows":[[31003],[300014],[300034]]};

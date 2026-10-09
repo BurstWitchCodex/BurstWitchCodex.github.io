@@ -1,0 +1,1 @@
+window.DB_TABLES=window.DB_TABLES||{};window.DB_TABLES["JudgmentDay_Special"]={"name":"judgmentday_special","accessor":"JudgmentDay_Special","fields":["id","model","ranking","reward"],"keyIndex":[1,2,3,4],"ids":["1","2","3"],"rows":[[1,1,1,[[4,7000007,3]]],[2,1,2,[[4,7000007,3]]],[3,1,3,[[4,7000007,3]]]]};

@@ -1,0 +1,1 @@
+window.DB_TABLES=window.DB_TABLES||{};window.DB_TABLES["activepiece_diceroll"]={"name":"activepiece_diceroll","accessor":"activepiece_diceroll","fields":["id","count","dice_probability"],"keyIndex":[1,2,3],"ids":["1","2","3","4","5"],"rows":[[1,1,[20,20,20,20,10,10]],[2,51,[20,20,20,20,10,10]],[3,101,[20,20,20,20,10,10]],[4,201,[20,20,20,20,10,10]],[5,501,[20,20,20,20,10,10]]]};

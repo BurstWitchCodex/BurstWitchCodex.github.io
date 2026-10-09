@@ -1,0 +1,1 @@
+window.DB_TABLES=window.DB_TABLES||{};window.DB_TABLES["Charge_Rebate"]={"name":"charge_rebate","accessor":"Charge_Rebate","fields":["id","Groupid","Chargelimit","Pyroxenerebate","Diamondrebate"],"keyIndex":[1,2,3,4,5],"ids":["1","2","3","4"],"rows":[[1,1004,0,120,800],[2,1004,5000,120,800],[3,1005,0,200,0],[4,1005,5000,130,0]]};

@@ -1,0 +1,1 @@
+window.DB_TABLES=window.DB_TABLES||{};window.DB_TABLES["Midnightmap"]={"name":"midnightmap","accessor":"Midnightmap","fields":["id","HeroId","Hero_map"],"keyIndex":[1,2,3],"ids":["100101"],"rows":[[100101,1021,"source_avatar/Midnightmap/1021"]]};
