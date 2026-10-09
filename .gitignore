@@ -3,13 +3,8 @@ node_modules/
 tools/.encoder/
 tools/_retired/
 _site/
-_未引用资源/
 *.tsv
 Thumbs.db
 Desktop.ini
 .DS_Store
-update.bat
-tools/一键更新文章.bat
-__Temp__/
 *.log
-Python/

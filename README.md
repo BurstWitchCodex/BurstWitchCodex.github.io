@@ -104,30 +104,6 @@
 | `tools/pages_archive_media.js`、`tools/pages_archive_audio.js` | 从 `_export` 按字段值搬归档图/音（只搬文件）。重跑会把已搬进 `_未引用资源/` 的东西再拷回来 |
 | `tools/site_update.js` | 旧打包器存根，只转发到 `pages_build.js`（兼容旧 .bat） |
 
-**一次性整理（已移到 `tools/_retired/`，都往 md 里写过内容，跑完即收）**
-
-| 脚本 | 当时做的事 |
-| --- | --- |
-| `_retired/pages_restructure.js` | 14 处缺图引用改文字占位；角色页移入 `pages/角色/`（不改资源路径） |
-| `_retired/pages_split_archive.js` | 归档按 `##` 大标题裁切成小文章（10 → 218 篇，10 独占 168） |
-| `_retired/pages_compact.js` | 10_战斗对白按字数合并零碎小节（168 → 25 篇） |
-| `_retired/pages_complete_04.js` | 08「四、其余未引用词条」从 30 条样例补全为全量 |
-| `_retired/pages_dedupe.js` | 08 内正文逐字相同的 `#### 词条` 块合并（673→175 等） |
-| `_retired/pages_roles_uniform.js` | 65 个角色页统一成 1001 结构；删重复台词小节；档案子标题上移成《篇名》 |
-| `_retired/pages_use_thumbs.js` | 显示原图的引用改成「缩略图 + 点开原图」 |
-| `_retired/pages_portrait_links.js` | 主/好感立绘补 `media/img` 原图并包成可点开链接 |
-| `_retired/pages_skin_gallery.js` | 主立绘下方生成装束并排卡片（名/获取方式/描述） |
-| `_retired/pages_audio_ext.js` | 把 1996 处 `media/sound/*.wav` 引用改成 `.mp3`（只改扩展名，要求残留 0 / 断链 0） |
-| `_retired/pages_fix_paths.js` | 把误加的 `../` 前缀还原成站点根写法并全量校验 |
-
-这些脚本移到 `_retired/` 后仍能跑（内部会自己上溯找站点根），但**默认不该再跑**：
-它们会重写 md 内容，而你手改的 md 现在是文案唯一来源。真要重跑先 `--dry` 看报告。
-
-**已退役的反向生成器**：`_retired/` 里还有 `web_pages.py`、`pages_voice_table.js`、`pages_archive_gallery.js`、
-`pages_bgm_links.js`、`pages_season_fix.js` —— 它们从 `data/t` 与词条生成正文，与“文案只从 pages 取”直接相冲，勿运行。
-
-**图像处理**：`make_thumbs.js`。
-
 ## 数据链路
 
 APK → Lua 明文（标准 XXTEA，8 字节运行时密钥，1132 份，已逐字节回 encrypt 验证）→ `web_extract.py`
@@ -138,11 +114,6 @@ APK → Lua 明文（标准 XXTEA，8 字节运行时密钥，1132 份，已逐�
 
 - 14 张好感立绘不存在（见上），已改文字占位。
 - **1043 维多利亚（未实装）已成页**：`CardCharacter` 无此行 → 无品质/职业/CV/属性/技能/装束表数据；但包内有她的 `dialogue` 24 条（中配 35 个 `1043-*` bank，已拷入 `media/sound/`）、`Story` 10430001–10430004 四篇档案、`Skin` 10430001 装束署名「斯托拉蒂」、一张好感立绘与三张技能图标（图标因无技能文案而未列）。
-  页面文字全部从「归档 · 08_未引用与删减」第五节逐字取用，表只用来对「场景 ↔ 语音文件」的结构关系；两处文字同源并存，要只留一处告诉我删哪边。她的 `voice_jp` 全为 `-1`（没配日配，不是文件缺失）。
-- 2 个角色页曾无头像 → 已补（`1239`、`1245`，用 `_export` 原图生成 `media/img` + `media/thumb`），现在无头像角色 0。
-- 归档主图的 `_1` 图集分块页在 `_未引用资源/`（母图在站内）。显示无影响：`viewer.js` 不做图集拼合。
-- `_未引用资源/` 1.43 GB / 3201 个：约 820 MB 从未显示过（运营图集、通用音效等）、565 MB 是废弃的「语音样本」块遗留、
-  923 个是图集分块页（其中真正带母图的 340 个 / 121 MB）。等你手动删。
 - `docs/` 是扁平目录 ⇒ md 文件名必须全站唯一，`pages_build.js` 会拒绝重名并退出非 0。
 
 ```
