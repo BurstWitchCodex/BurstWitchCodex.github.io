@@ -4,7 +4,7 @@
  * 生成者：tools/pages_build.js（每次构建整体重写，手改会被覆盖；要改文案改 pages 下的 md）
  * 版式由 tools/data_pretty.js 维护（只动空白不动值，可用 --check 复验）。 */
 window.DB_PAGES=[
- {"file":"pages/主页.md","words":1419,"doc":"docs/主页.md.js","id":"","title":"主页","sub":"主页","cat":"","thumb":null},
+ {"file":"pages/主页.md","words":1232,"doc":"docs/主页.md.js","id":"","title":"主页","sub":"主页","cat":"","thumb":null},
  {"file":"pages/法典系统.md","words":1777,"doc":"docs/法典系统.md.js","id":"","title":"法典系统","sub":"汇总","cat":"","thumb":null},
  {"file":"pages/羁绊.md","words":13388,"doc":"docs/羁绊.md.js","id":"","title":"羁绊","sub":"汇总","cat":"","thumb":null},
  {"file":"pages/角色/1001_安娜.md","words":10746,"doc":"docs/1001_安娜.md.js","id":"1001","title":"安娜","sub":"角色","cat":"初版角色","thumb":"media/thumb/source_avatar/hero/body_1001_body_1001.png"},
